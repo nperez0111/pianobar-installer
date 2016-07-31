@@ -7,6 +7,8 @@ What this does is:
  3. makes a file called config which stores the configuration 
  4. uses sublime text to open the config file subl can be replaced with open to use any editor you like
  5. Copy and paste the contents below into the file and save. Change as you please.
+ 
+Take out width and height lines as they dont apply in Mac OS
 
 # Windows Install 
 
