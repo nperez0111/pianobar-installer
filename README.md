@@ -9,7 +9,11 @@ What this does is:
  5. Copy and paste the contents below into the file and save. Change as you please.
 
 # Windows Install 
-make a file called pianobar.cfg in the same directory that pianobar.exe is in and copy these contents in. Changing as you please.
+
+Make a file called pianobar.cfg in the same directory that pianobar.exe is in and copy these contents in. Changing as you please.
 
 # Some Config Stuff
-If you want a certain station to start every time you open pianobar open up the pandora web player( pandora.com ). Select a station you want to be as the auto starting station. Copy the URL it will look something like this `http://www.pandora.com/station/play/3195239640586748282` take the mess of numbers at the end and copy that into the pianobar config and that station will now always start with pianobar.
+
+1. If you want a certain station to start every time you open pianobar open up the pandora web player( pandora.com ). 
+2. Select a station you want to be as the auto starting station. 
+3. Copy the URL it will look something like this `http://www.pandora.com/station/play/3195239640586748282` take the mess of numbers at the end and copy that into the pianobar config and that station will now always start with pianobar.
