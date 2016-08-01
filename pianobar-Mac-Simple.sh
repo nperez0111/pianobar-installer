@@ -30,11 +30,11 @@ fi
 #cd pianobar
 read -p "Do you have an autostart station ready? (y/N)? " answer
 case ${answer:0:1} in
-    y|Y )
+    y|Y)
         echo "Please enter the autostart station you have prepared: "
 		read autostart
     ;;
-    * )
+    *)
         echo "It's alright that's cool..."
     ;;
 esac
