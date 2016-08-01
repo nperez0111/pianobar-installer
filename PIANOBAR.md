@@ -2,7 +2,7 @@
 
 This will install pianobar and setup autologin.
 
-`wget https://gist.githubusercontent.com/nperez0111/2ad48cf5bee2f10a8478/raw/19fd8ec20bb11a43221fc8e83d034529e29e8333/pianobar-Mac-Simple.sh && chmod +x pianobar-Mac-Simple.sh && ./pianobar-Mac-Simple.sh`
+`wget https://gist.githubusercontent.com/nperez0111/2ad48cf5bee2f10a8478/raw/95dcb6540c0c2eba0c5a82762a6a9a91d5ff2c14/pianobar-Mac-Simple.sh && chmod +x pianobar-Mac-Simple.sh && ./pianobar-Mac-Simple.sh`
 
 # Mac Install Advanced (Shell Script)
 
