@@ -36,6 +36,7 @@ What you need to do:
  1. Paste in the contents of pianobarNotify.rb into your sublime text window close and save
  2. open the config file you made prior (Located as:`~/.config/pianobar/config` or reopen it simply with `subl ~/.config/pianobar/config`)
  3. Add this Line `event_command = ~/.config/pianobar/pianobarNotify.rb`
+ 4. If you want a custom pandora icon change `~/.config/pianobar/PandoraIco.png` to be the location of your icon in every occurence in the `pianobarNotify.rb` file
 
 # Windows Install 
 

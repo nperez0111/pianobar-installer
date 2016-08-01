@@ -23,11 +23,15 @@ cat <<EOT >> pianobarNotify.rb
 
 trigger = ARGV.shift
 
-if trigger == 'songstart'
-  songinfo = {}
+songinfo = {}
+STDIN.each_line { |line| songinfo.store(*line.chomp.split('=', 2))}
 
-  STDIN.each_line { |line| songinfo.store(*line.chomp.split('=', 2))}
-  `terminal-notifier -title "#{songinfo['title']}" -subtitle "By:#{songinfo['artist']}" -group "Pianobar" -appIcon "/Users/nickthesick/Documents/PandoraIco.png" -activate "com.googlecode.iterm2" -message "Album:#{songinfo['album']} on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"`
+if trigger == 'songstart'
+	`terminal-notifier -title "#{songinfo['title']}" -subtitle "By:#{songinfo['artist']}" -group "Pianobar" -appIcon "~/.config/pianobar/PandoraIco.png" -activate "com.googlecode.iterm2" -message "Album:#{songinfo['album']} on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"`
+elsif trigger == 'userlogin'
+	`terminal-notifier -title "Pianobar Started" -message "Welcome back" -group "Pianobar" -appIcon "~/.config/pianobar/PandoraIco.png"`
+elsif trigger == 'stationfetchplaylist'
+	`terminal-notifier -title "Fetching songs..." -message "Changing stations" -group "Pianobar" -appIcon "~/.config/pianobar/PandoraIco.png"`
 end
 EOT
 defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
