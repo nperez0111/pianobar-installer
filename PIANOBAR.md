@@ -14,13 +14,16 @@ Take out width and height lines as they dont apply in Mac OS
 
 This section will add notifications to pianobar that come up through notification center. Letting you know when the next song is playing.
 
-`touch pianobarNotify.rb && subl pianobarNotify.rb`
+`touch pianobarNotify.rb && subl pianobarNotify.rb && defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'`
 
 What this does:
- 1. Create a file called pianobarNotify in sublime text to edit
- 2. Paste in the contents of pianobarNotify.rb into your sublime text window close and save
- 3. open the config file you made prior (Located as:`~/.config/pianobar/config`)
- 4. Add this Line `event_command = ~/.config/pianobar/pianobarNotify.rb`
+ 1. Create a file called pianobarNotify.
+ 2. Sublime Text to edit the new file.
+ 3. All the crazy stuff at the end is just to change a setting to allow terminal notifications to include the cover art photo. If not run it will simply not show the cover art.
+What you need to do: 
+ 1. Paste in the contents of pianobarNotify.rb into your sublime text window close and save
+ 2. open the config file you made prior (Located as:`~/.config/pianobar/config` or reopen it simply with `subl ~/.config/pianobar/config`)
+ 3. Add this Line `event_command = ~/.config/pianobar/pianobarNotify.rb`
 
 # Windows Install 
 
