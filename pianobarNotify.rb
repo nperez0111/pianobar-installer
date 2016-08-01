@@ -6,5 +6,5 @@ if trigger == 'songstart'
   songinfo = {}
 
   STDIN.each_line { |line| songinfo.store(*line.chomp.split('=', 2))}
-  `terminal-notifier -title "Pianobar" -subtitle "Another Great Song coming up..." -group "Pianobar" -contentImage "/Users/nickthesick/Documents/PandoraIco.png" -activate "com.googlecode.iterm2" -message "Now Playing" -m "#{songinfo['title']}\nby #{songinfo['artist']}"`
+  `terminal-notifier -title "Pianobar" -subtitle "#{songinfo['title']} by #{songinfo['artist']}" -group "Pianobar" -appIcon "/Users/nickthesick/Documents/PandoraIco.png" -activate "com.googlecode.iterm2" -message "on the album: '#{songinfo['album']}' on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"`
 end

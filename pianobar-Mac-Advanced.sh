@@ -1,2 +1,33 @@
 #!/bin/sh
-# Advanced version Includes Notifications
+# Advanced Version does use notifications
+
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
+wget https://gist.githubusercontent.com/nperez0111/2ad48cf5bee2f10a8478/raw/37eb6a0666f8c54a1ddf084c82fbebd8bf5a785e/pianobar-Mac-Simple.sh
+chmod +x pianobar-Mac-Simple.sh
+./pianobar-Mac-Simple.sh
+
+if command_exists terminal-notifier; then
+    #Pianobar is fine so we do nothing and continue script
+    echo "Terminal-Notifier exists. Awesome..."
+else 
+	brew install terminal-notifier
+fi
+
+cd ~/.config/pianobar
+touch pianobarNotify.rb
+cat <<EOT >> pianobarNotify.rb
+#!/usr/bin/ruby
+
+trigger = ARGV.shift
+
+if trigger == 'songstart'
+  songinfo = {}
+
+  STDIN.each_line { |line| songinfo.store(*line.chomp.split('=', 2))}
+  `terminal-notifier -title "Pianobar" -subtitle "#{songinfo['title']} by #{songinfo['artist']}" -group "Pianobar" -appIcon "/Users/nickthesick/Documents/PandoraIco.png" -activate "com.googlecode.iterm2" -message "on the album: '#{songinfo['album']}' on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"`
+end
+EOT
+defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'

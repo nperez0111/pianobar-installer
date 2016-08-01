@@ -20,14 +20,60 @@ fi
 
 if command_exists pianobar; then
 	#Pianobar is fine so keep going
-	echo ""
+	rm /usr/local/Library/Formula/libao.rb
+	cat <<EOT >> /usr/local/Library/Formula/libao.rb
+  class Libao < Formula
+  desc "Cross-platform Audio Library"
+  homepage "https://www.xiph.org/ao/"
+
+  ## Original libao source
+  #url "http://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz"
+  #sha256 "03ad231ad1f9d64b52474392d63c31197b0bc7bd416e58b1c10a329a5ed89caf"
+
+  # More recent libao commit:
+  # https://git.xiph.org/?p=libao.git;a=commit;h=18dc25cd129a7e5a9669cbdd9b076f58063606a2
+  # We'll call it "1.2.0-snapshot-18dc25c" to indicate that it's a bit ahead of 1.2.0 proper.
+  url "https://git.xiph.org/?p=libao.git;a=snapshot;h=18dc25cd129a7e5a9669cbdd9b076f58063606a2;sf=tgz"
+  sha256 "c4a1c2caac8dff249003338e20df2b614cf59e9f5c3b33c663ef8b627a370062"
+  version "1.2.0-snapshot-18dc25c"
+
+  bottle do
+    revision 1
+    sha256 "159aa7704f0a3cd36bfdf659ca8ec9c399077274bff1b68aa0497fdda8b6da44" => :el_capitan
+    sha256 "08d568c4bed498b2920983d9b848213779164c15489c82cc61429533337d19f5" => :yosemite
+    sha256 "81b1d6c5d1920092fba0470db2840414eb99bba8ec63d6d22800e79090db8e4b" => :mavericks
+    sha256 "21aa15e92c5577a4a610de8fbb3f5a72638a0c37a40c4ebebc14826359932efa" => :mountain_lion
+  end
+
+  depends_on "pkg-config" => :build
+
+  # Building from an between-releases source also requires automake, autoconf, and libtool
+  # in order to be able to run autogen.sh
+  depends_on "automake" => :build
+  depends_on "autoconf" => :build
+  depends_on "libtool" => :build
+
+  def install
+    # Add autogen.sh - I believe this must be run as part of libao's release process, since
+    # the files generated here were already present in the 1.2.0 proper release tarball.
+    system "AUTOMAKE_FLAGS=--include-deps ./autogen.sh"
+    system "./configure", "--disable-dependency-tracking",
+                          "--prefix=#{prefix}",
+                          "--enable-static"
+    system "make", "install"
+  end
+end
+	EOT
+	brew remove libao
+	brew install libao
+
 else
 	echo "something went wrong now exiting..."; exit 1;
 fi
 
-#cd ~/.config
-#mkdir pianobar
-#cd pianobar
+cd ~/.config
+mkdir pianobar
+cd pianobar
 read -p "Do you have an autostart station ready? (y/N)? " answer
 case ${answer:0:1} in
     "y"|"Y")

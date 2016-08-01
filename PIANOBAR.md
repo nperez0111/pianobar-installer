@@ -1,3 +1,13 @@
+# Mac Install Simple (Shell Script)
+
+This will install pianobar and setup autologin.
+
+`wget https://gist.githubusercontent.com/nperez0111/2ad48cf5bee2f10a8478/raw/37eb6a0666f8c54a1ddf084c82fbebd8bf5a785e/pianobar-Mac-Simple.sh && chmod +x pianobar-Mac-Simple.sh && ./pianobar-Mac-Simple.sh`
+
+# Mac Install Advanced (Shell Script)
+
+This will install pianobar, setup autologin and add notifications.
+
 # Mac Install (Manually)
 `cd ~/.config && mkdir pianobar && cd pianobar && touch config && subl config`
 
