@@ -10,6 +10,18 @@ What this does is:
  
 Take out width and height lines as they dont apply in Mac OS
 
+# Extended Mac Install
+
+This section will add notifications to pianobar that come up through notification center. Letting you know when the next song is playing.
+
+`touch pianobarNotify.rb && subl pianobarNotify.rb`
+
+What this does:
+ 1. Create a file called pianobarNotify in sublime text to edit
+ 2. Paste in the contents of pianobarNotify.rb into your sublime text window close and save
+ 3. open the config file you made prior (Located as:`~/.config/pianobar/config`)
+ 4. Add this Line `event_command = ~/.config/pianobar/pianobarNotify.rb`
+
 # Windows Install 
 
 Make a file called pianobar.cfg in the same directory that pianobar.exe is in and copy these contents in. Changing as you please.
