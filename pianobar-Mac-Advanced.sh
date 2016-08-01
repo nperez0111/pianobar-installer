@@ -24,7 +24,7 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
-wget https://gist.githubusercontent.com/nperez0111/2ad48cf5bee2f10a8478/raw/37eb6a0666f8c54a1ddf084c82fbebd8bf5a785e/pianobar-Mac-Simple.sh
+wget https://gist.githubusercontent.com/nperez0111/2ad48cf5bee2f10a8478/raw/9975ec5644fe7ab88efd1c96155911e20373af74/pianobar-Mac-Simple.sh
 chmod +x pianobar-Mac-Simple.sh
 ./pianobar-Mac-Simple.sh
 
