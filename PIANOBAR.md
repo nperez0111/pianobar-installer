@@ -1,4 +1,4 @@
-# Mac Install
+# Mac Install (Manually)
 `cd ~/.config && mkdir pianobar && cd pianobar && touch config && subl config`
 
 What this does is: 
@@ -10,7 +10,7 @@ What this does is:
  
 Take out width and height lines as they dont apply in Mac OS
 
-# Extended Mac Install
+# Extended Mac Install (Manually)
 
 This section will add notifications to pianobar that come up through notification center. Letting you know when the next song is playing.
 
