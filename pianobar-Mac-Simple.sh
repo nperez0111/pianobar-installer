@@ -4,23 +4,10 @@
 command_exists () {
     type "$1" &> /dev/null ;
 }
+fixLibao () {
 
-if command_exists pianobar; then
-    #Pianobar is fine so we do nothing and continue script
-    echo "Pianobar exists: Awesome..."
-else 
-	if command_exists brew; then
-		#Pianobar is not available but brew is so 
-		brew install pianobar
-	else
-		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-		brew install pianobar
-	fi
-fi
+rm -f /usr/local/Library/Formula/libao.rb
 
-if command_exists pianobar; then
-	#Pianobar is fine so keep going
-	rm /usr/local/Library/Formula/libao.rb
 cat <<EOT >> /usr/local/Library/Formula/libao.rb
 class Libao < Formula
 desc "Cross-platform Audio Library"
@@ -53,16 +40,71 @@ system "make", "install"
 end
 end
 EOT
-	brew remove libao
-	brew install libao
 
-else
-	echo "something went wrong now exiting..."; exit 1;
+brew remove libao >/dev/null
+brew install libao >/dev/null
+
+}
+
+if command_exists pianobar; then
+    #Pianobar is fine so we do nothing and continue script
+    echo "Pianobar exists: Awesome..."
+else 
+	if command_exists brew; then
+		#Pianobar is not available but brew is so 
+
+		echo "Installing Pianobar"
+		brew install pianobar
+		echo "Pianobar Installed Successfully"
+
+	else
+		#Neither Pianobar or Brew is installed so install both despite making the proccess longer
+		
+		echo "Installing Homebrew"
+		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+		echo "Homebrew Installed Successfully"
+
+		echo "Installing Pianobar"
+		brew install pianobar
+		echo "Pianobar Installed Successfully"
+
+	fi
 fi
 
-#cd ~/.config
-#mkdir pianobar
-#cd pianobar
+if command_exists pianobar; then
+	#Pianobar is fine so keep going 
+	
+	echo "If you have never run this program before please run this. Only not fix warnings if you know what you are doing!"
+	
+	read -p "Do you want to fix audio warnings (Y/n)?" answer
+	case ${answer:0:1} in
+	    "n"|"N")
+
+	        echo "Not going to fix audio warnings..."
+
+	    ;;
+	    *)
+
+			echo "Fixing audio Warnings..."
+	        fixLibao
+	        echo "Audio Warnings Fixed..."
+
+	    ;;
+	esac
+
+else
+
+	echo "Something went wrong now exiting..."
+	echo "Check if Pianobar is Installed."
+
+	exit 1
+
+fi
+
+cd ~/.config
+mkdir pianobar
+cd pianobar
+
 printf "\n The autostart station can be found by either: \n * Running pianobar pressing 's' to change the station to the station you would like to auto start.\n * Then note the number that shows next to said station. \n\n OR \n\n By going into the web player select the station you would like to autostart \n * note the numbers at the end of the URL?\n"
 read -p "Do you have an autostart station ready (y/N)" answer
 case ${answer:0:1} in
@@ -71,13 +113,16 @@ case ${answer:0:1} in
 		read autostart
     ;;
     *)
-        echo "It's alright that's cool..."
+        echo "Default Autostart Station will be applied"
+        autostart="814524665525141882"
     ;;
 esac
 echo "Please enter user name for pandora (For Auto-login): "
 read username
 echo "Please Enter pandora password (For Auto-Login): "
 read password
+
+rm config -f
 cat <<EOT >> config
 user = ${username}
 password = ${password}
