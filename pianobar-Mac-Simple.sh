@@ -53,9 +53,8 @@ system "make", "install"
 end
 end
 EOT
-
-brew remove libao
-brew install libao
+	brew remove libao
+	brew install libao
 
 else
 	echo "something went wrong now exiting..."; exit 1;
@@ -64,7 +63,8 @@ fi
 #cd ~/.config
 #mkdir pianobar
 #cd pianobar
-read -p "Do you have an autostart station ready? (y/N)? " answer
+printf "\n The autostart station can be found by either: \n * Running pianobar pressing 's' to change the station to the station you would like to auto start.\n * Then note the number that shows next to said station. \n\n OR \n\n By going into the web player select the station you would like to autostart \n * note the numbers at the end of the URL?\n"
+read -p "Do you have an autostart station ready (y/N)" answer
 case ${answer:0:1} in
     "y"|"Y")
         echo "Please enter the autostart station you have prepared: "
