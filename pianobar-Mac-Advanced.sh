@@ -27,7 +27,7 @@ command_exists () {
 read -p "Do you want to run the Simple Installer (This runs the installer for pianobar and fixes warnings and sets up auto login auto start station)? (Y/n)" answer
 case ${answer:0:1} in
     "n"|"N")
-        echo ""
+        echo "Simple Installer not running..."
     ;;
     *)
         bash <(curl -s https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Simple.sh)
@@ -80,12 +80,15 @@ case ${answ:0:1} in
 				case ${num:0:1} in
 					1)
 						termApp="com.googlecode.iterm2"
+						echo "iTerm2 Selected"
 					;;
 					2)
 						termApp="com.apple.terminal"
+						echo "Terminal Selected"
 					;;
 					3)
 						termApp="co.zeit.hyperterm"
+						echo "HyperTerm Selected"
 					;;
 					*)
 						echo "Not valid value. Exiting..."
@@ -104,7 +107,6 @@ case ${answ:0:1} in
 		        
 		    ;;
 		esac
-		read imgFilePath
 		showTerm="-activate \"${termApp}\""
     ;;
     *)
