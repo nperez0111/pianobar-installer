@@ -2,13 +2,13 @@
 
 This will install pianobar and setup autologin.
 
-`wget https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Advanced.sh && chmod +x pianobar-Mac-Simple.sh && ./pianobar-Mac-Simple.sh`
+`bash <(curl -s https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Simple.sh)`
 
 # Mac Install Advanced (Shell Script)
 
 This will install pianobar, setup autologin and add notifications.
 
-`wget https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Advanced.sh && chmod +x pianobar-Mac-Advanced.sh && ./pianobar-Mac-Advanced.sh`
+`bash <(curl -s https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Advanced.sh)`
 
 # Mac Install (Manually)
 `cd ~/.config && mkdir pianobar && cd pianobar && touch config && subl config`

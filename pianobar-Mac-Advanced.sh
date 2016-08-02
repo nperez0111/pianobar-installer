@@ -24,9 +24,7 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
-wget https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Simple.sh
-chmod +x pianobar-Mac-Simple.sh
-./pianobar-Mac-Simple.sh
+bash <(curl -s https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Simple.sh)
 
 if command_exists terminal-notifier; then
     #Pianobar is fine so we do nothing and continue script
@@ -35,6 +33,7 @@ if command_exists terminal-notifier; then
 else 
 
 	echo "Installing Terminal-Notifier"
+	brew update
 	brew install terminal-notifier
 	echo "Terminal-Notifier has successfully Installed"
 
