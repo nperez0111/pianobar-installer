@@ -125,17 +125,22 @@ if trigger == 'songstart'
 
   STDIN.each_line { |line| songinfo.store(*line.chomp.split('=', 2))}
 
-  `echo terminal-notifier -title "Pianobar" -subtitle "#{songinfo['title']} by #{songinfo['artist']}" -group "Pianobar" ${image} ${showTerm} -message "album: '#{songinfo['album']}' on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"`
+  echo \`terminal-notifier -title \"Pianobar\" -subtitle \"#{songinfo['title']} by #{songinfo['artist']}\" -group \"Pianobar\" ${image} ${showTerm} -message \"album: '#{songinfo['album']}' on #{songinfo['stationName']}\" -contentImage \"#{songinfo['coverArt']}\"\`
 
 elsif trigger == 'userlogin'
 
-	`echo terminal-notifier -title "Pianobar Started" -message "Welcome back" -group "Pianobar" ${image}`
+	echo \`terminal-notifier -title \"Pianobar Started\" -message \"Welcome back\" -group \"Pianobar\" ${image}\`
 
 elsif trigger == 'stationfetchplaylist'
 
-	`echo terminal-notifier -title "Fetching songs..." -message "Changing stations" -group "Pianobar" ${image}`
+	echo \`terminal-notifier -title \"Fetching songs...\" -message \"Changing stations\" -group \"Pianobar\" ${image}\`
 
 end
 EOT
+chmod +x pianobarNotify.rb
+cat <<EOT >> config
+event_command = ~/.config/pianobar/pianobarNotify.rb
+EOT
+
 defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
 exit 0;
