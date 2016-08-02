@@ -24,7 +24,16 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
-bash <(curl -s https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Simple.sh)
+read -p "Do you want to run the Simple Installer (This runs the installer for pianobar and fixes warnings and sets up auto login auto start station)? (Y/n)" answer
+case ${answer:0:1} in
+    "n"|"N")
+        echo ""
+    ;;
+    *)
+        bash <(curl -s https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Simple.sh)
+    ;;
+esac
+
 
 if command_exists terminal-notifier; then
     #Pianobar is fine so we do nothing and continue script
@@ -127,3 +136,4 @@ elsif trigger == 'stationfetchplaylist'
 end
 EOT
 defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
+exit 0;
