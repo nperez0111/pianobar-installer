@@ -31,10 +31,10 @@ if command_exists terminal-notifier; then
 
 else 
 
-	echo "Terminal-Notifier Installing..."
+	printf "Terminal-Notifier Installing..."
 	brew update >/dev/null
 	brew install terminal-notifier >/dev/null
-	echo "Terminal-Notifier, successfully Installed"
+	printf "Successfully Installed\n"
 
 fi
 
@@ -42,7 +42,7 @@ fi
 read -p "Do you want a specific image to show in each notification? (y/N)" answe
 case ${answe:0:1} in
     "y"|"Y")
-        echo "Please enter the file path of the image you would like as the icon of each notification: "
+        printf "Please enter the file path of the image you would like as the icon of each notification: \n"
 		read imgFilePath
 		image="-appIcon \"${imgFilePath}\""
     ;;
@@ -62,7 +62,7 @@ case ${answ:0:1} in
 		case ${answer:0:1} in
 		    "y"|"Y")
 				#terminal is in list ask index
-		        echo "Please enter the number of the terminal in the list above: "
+		        printf "Please enter the number of the terminal in the list above:\n"
 				read num
 				case ${num:0:1} in
 					1)
@@ -85,7 +85,7 @@ case ${answ:0:1} in
 		    ;;
 		    *)
 		        #terminal is not shown so must do a prompt for the bundle id
-		        echo "Please enter the name of the terminal program you use."
+		        printf "Please enter the name of the terminal program you use.\n"
 				read termProgram
 
 				termApp="$(osascript -e "id of app \"${termProgram}\"")"

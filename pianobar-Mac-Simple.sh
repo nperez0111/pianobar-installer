@@ -59,9 +59,9 @@ else
 	if command_exists brew; then
 		#Pianobar is not available but brew is so 
 
-		echo "Installing Pianobar"
+		printf "Installing Pianobar..."
 		brew install pianobar
-		echo "Pianobar Installed Successfully"
+		printf "Successfully Installed\n"
 
 	else
 		#Neither Pianobar or Brew is installed so install both despite making the proccess longer
@@ -70,9 +70,13 @@ else
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 		echo "Homebrew Installed Successfully"
 
-		echo "Installing Pianobar"
-		brew install pianobar
-		echo "Pianobar Installed Successfully"
+		printf "Updating Brew..."
+		brew update >/dev/null
+		printf "OK\n"
+
+		printf "Installing Pianobar..."
+		brew install pianobar >/dev/null
+		printf "Successfully Installed\n"
 
 	fi
 fi
@@ -144,4 +148,5 @@ format_msg_question = [97m[?][0m %s
 format_msg_debug = [90m%s[0m
 EOT
 
+echo "Success..."
 exit 0
