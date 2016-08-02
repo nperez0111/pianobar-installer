@@ -42,13 +42,11 @@ if command_exists terminal-notifier; then
 else 
 
 	echo "Installing Terminal-Notifier"
-	brew update
-	brew install terminal-notifier
+	brew update >/dev/null
+	brew install terminal-notifier >/dev/null
 	echo "Terminal-Notifier has successfully Installed"
 
 fi
-
-cd ~/.config/pianobar
 
 #Handle Images
 read -p "Do you want a specific image to show in each notification? (y/N)" answe
@@ -113,6 +111,8 @@ case ${answ:0:1} in
         echo "No action will be performed on click of notification..."
     ;;
 esac
+
+cd ~/.config/pianobar
 
 rm pianobarNotify.rb -f
 #Actually write file
