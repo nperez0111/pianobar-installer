@@ -43,8 +43,8 @@ cd ~/.config/pianobar
 rm pianobarNotify.rb -f
 
 #Handle Images
-read -p "Do you want a specific image to show in each notification? (y/N)" answer
-case ${answer:0:1} in
+read -p "Do you want a specific image to show in each notification? (y/N)" answe
+case ${answe:0:1} in
     "y"|"Y")
         echo "Please enter the file path of the image you would like as the icon of each notification: "
 		read imgFilePath
@@ -56,8 +56,8 @@ case ${answer:0:1} in
 esac
 
 #Handle Terminal
-read -p "Do you want pianobar to show on click of notification (Y/n)" answer
-case ${answer:0:1} in
+read -p "Do you want pianobar to show on click of notification (Y/n)" answ
+case ${answ:0:1} in
     "y"|"Y")
         echo "1)iTerm2"
         echo "2)Terminal"
