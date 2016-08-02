@@ -15,10 +15,12 @@ rmv () {
 read -p "Do you want to run the Simple Installer (This runs the installer for pianobar and fixes warnings and sets up auto login auto start station)? (Y/n)" answer
 case ${answer:0:1} in
     "n"|"N")
-        echo "Simple Installer not running..."
+        echo "Simple Installer will not run..."
     ;;
     *)
+        echo "Running Simple Script..."
         bash <(curl -s https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/pianobar-Mac-Simple.sh)
+        echo "Simple Script Installed Pianobar Successfully."
     ;;
 esac
 
@@ -29,10 +31,10 @@ if command_exists terminal-notifier; then
 
 else 
 
-	echo "Installing Terminal-Notifier"
+	echo "Terminal-Notifier Installing..."
 	brew update >/dev/null
 	brew install terminal-notifier >/dev/null
-	echo "Terminal-Notifier has successfully Installed"
+	echo "Terminal-Notifier, successfully Installed"
 
 fi
 
@@ -102,8 +104,12 @@ esac
 
 cd ~/.config/pianobar
 
+printf "Removing old Notification Script..."
 rmv pianobarNotify.rb
+printf "OK\n"
+
 #Actually write file
+printf "Writng Notification Script..."
 cat <<EOT >> pianobarNotify.rb
 #!/usr/bin/ruby
 
@@ -126,15 +132,19 @@ elsif trigger == 'stationfetchplaylist'
 
 end
 EOT
-echo "Wrote Notification Script."
+printf "OK\n"
 
 chmod +x pianobarNotify.rb
+
+printf "Writing to config file..."
 cat <<EOT >> config
 event_command = ~/.config/pianobar/pianobarNotify.rb
 EOT
+printf "OK\n"
 
-echo "Writing setting to terminal-notifier"
+printf "Writing setting to terminal-notifier..."
 defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
+printf "OK\n"
 
 echo "Success..."
 read -p "Do you want to run pianobar now? (Y/n)" answe
