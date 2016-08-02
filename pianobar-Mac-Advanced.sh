@@ -91,6 +91,8 @@ case ${answer:0:1} in
 				read termProgram
 
 				termApp="$(bid termProgram)"
+
+				echo "The Bundle ID we found was:${termApp}"
 		        
 		    ;;
 		esac
@@ -112,7 +114,17 @@ if trigger == 'songstart'
   songinfo = {}
 
   STDIN.each_line { |line| songinfo.store(*line.chomp.split('=', 2))}
+
   `terminal-notifier -title "Pianobar" -subtitle "#{songinfo['title']} by #{songinfo['artist']}" -group "Pianobar" ${image} ${showTerm} -message "album: '#{songinfo['album']}' on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"`
+
+elsif trigger == 'userlogin'
+
+	`terminal-notifier -title "Pianobar Started" -message "Welcome back" -group "Pianobar" ${image}`
+
+elsif trigger == 'stationfetchplaylist'
+
+	`terminal-notifier -title "Fetching songs..." -message "Changing stations" -group "Pianobar" ${image}`
+	
 end
 EOT
 defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
