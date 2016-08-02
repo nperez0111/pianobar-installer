@@ -68,7 +68,7 @@ case ${answ:0:1} in
 				#terminal is in list ask index
 		        echo "Please enter the number of the terminal in the list above: "
 				read num
-				case ${num:01} in
+				case ${num:0:1} in
 					1)
 						termApp="com.googlecode.iterm2"
 					;;
