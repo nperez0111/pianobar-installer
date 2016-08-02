@@ -57,13 +57,13 @@ case ${answer:0:1} in
 esac
 
 #Handle Terminal
-read -p "Do you want pianobar to show on click of notification (y/N)" answer
+read -p "Do you want pianobar to show on click of notification (Y/n)" answer
 case ${answer:0:1} in
     "y"|"Y")
         echo "1)iTerm2"
         echo "2)Terminal"
         echo "3)HyperTerm"
-        read -p "Is your Terminal shown in this list? (y/N)" answer
+        read -p "Is your Terminal shown in this list? (Y/n)" answer
 		case ${answer:0:1} in
 		    "y"|"Y")
 				#terminal is in list ask index
@@ -124,7 +124,7 @@ elsif trigger == 'userlogin'
 elsif trigger == 'stationfetchplaylist'
 
 	`terminal-notifier -title "Fetching songs..." -message "Changing stations" -group "Pianobar" ${image}`
-	
+
 end
 EOT
 defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
