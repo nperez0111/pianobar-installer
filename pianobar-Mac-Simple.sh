@@ -143,3 +143,5 @@ format_msg_err = [90m/!\[0m %s
 format_msg_question = [97m[?][0m %s
 format_msg_debug = [90m%s[0m
 EOT
+
+exit 0

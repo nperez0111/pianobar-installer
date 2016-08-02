@@ -156,5 +156,16 @@ echo "Writing setting to terminal-notifier"
 defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
 
 echo "Success..."
-echo "All Functioning, test by running the command 'pianobar'"
+read -p "Do you want to run pianobar now? (Y/n)" answe
+case ${answe:0:1} in
+    "n"|"N")
+        exit 0;
+    ;;
+    *)
+        echo "Pianobar Starting...."
+        echo ""
+        echo ""
+        pianobar
+    ;;
+esac
 exit 0;
