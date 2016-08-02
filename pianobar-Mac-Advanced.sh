@@ -49,7 +49,6 @@ else
 fi
 
 cd ~/.config/pianobar
-rm pianobarNotify.rb -f
 
 #Handle Images
 read -p "Do you want a specific image to show in each notification? (y/N)" answe
@@ -111,9 +110,11 @@ case ${answ:0:1} in
     ;;
     *)
         showTerm=""
+        echo "No action will be performed on click of notification..."
     ;;
 esac
 
+rm pianobarNotify.rb -f
 #Actually write file
 cat <<EOT >> pianobarNotify.rb
 #!/usr/bin/ruby
@@ -137,10 +138,16 @@ elsif trigger == 'stationfetchplaylist'
 
 end
 EOT
+echo "Wrote Notification Script."
+
 chmod +x pianobarNotify.rb
 cat <<EOT >> config
 event_command = ~/.config/pianobar/pianobarNotify.rb
 EOT
 
+echo "Writing setting to terminal-notifier"
 defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
+
+echo "Success..."
+echo "All Functioning, test by running the command 'pianobar'"
 exit 0;
