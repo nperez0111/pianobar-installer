@@ -24,6 +24,13 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
+rmv () {
+	if [ -f $1 ]
+	then 
+	    rm -f $1
+	fi 
+}
+
 read -p "Do you want to run the Simple Installer (This runs the installer for pianobar and fixes warnings and sets up auto login auto start station)? (Y/n)" answer
 case ${answer:0:1} in
     "n"|"N")
@@ -114,7 +121,7 @@ esac
 
 cd ~/.config/pianobar
 
-rm pianobarNotify.rb -f
+rmv pianobarNotify.rb
 #Actually write file
 cat <<EOT >> pianobarNotify.rb
 #!/usr/bin/ruby

@@ -4,9 +4,15 @@
 command_exists () {
     type "$1" &> /dev/null ;
 }
+rmv () {
+	if [ -f $1 ]
+	then 
+	    rm -f $1
+	fi 
+}
 fixLibao () {
 
-rm -f /usr/local/Library/Formula/libao.rb
+rmv /usr/local/Library/Formula/libao.rb
 
 cat <<EOT >> /usr/local/Library/Formula/libao.rb
 class Libao < Formula
@@ -122,7 +128,7 @@ read username
 echo "Please Enter pandora password (For Auto-Login): "
 read password
 
-rm config -f
+rmv config
 cat <<EOT >> config
 user = ${username}
 password = ${password}
