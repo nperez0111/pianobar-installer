@@ -69,13 +69,13 @@ case ${answer:0:1} in
 		        echo "Please enter the number of the terminal in the list above: "
 				read num
 				case ${num:01} in
-					"1")
+					1)
 						termApp="com.googlecode.iterm2"
 					;;
-					"2")
+					2)
 						termApp="com.apple.terminal"
 					;;
-					"3")
+					3)
 						termApp="co.zeit.hyperterm"
 					;;
 					*)
