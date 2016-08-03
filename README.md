@@ -1,3 +1,13 @@
+# Pianobar Installer Scripts and Guide
+======================================
+These Scripts Help Install Pianobar (A Command Line Pandora Player) onto Windows and Mac OS X. For Mac I've written a bash script that can be copied and pasted into a terminal emulator of your choice to install pianobar and fix some settings. 
+
+The funtionality of the scripts are as follows:
+ * Fixes a warning that comes up because of an out of date audio library (libao)
+ * Sets up Auto Login to pianobar using your pandora account ( Otherwise you would have to provide your username and password on every instance of pianobar )
+ * Sets up Auto Start Station which on start of pianobar will allow you to start a station you set automatically ( otherwise you would need to select the station on every restart of pianobar)
+ * If you use the advanced installer it will allow for you to set up notifications on changing the song to mac os x banners. And even show album cover art so you know exactly what song is playing without having to go back into the console
+
 # Mac Install Simple (Shell Script)
 
 This will install pianobar and setup autologin.
@@ -42,7 +52,7 @@ What you need to do:
 
 Make a file called pianobar.cfg in the same directory that pianobar.exe is in and copy these contents in. Changing as you please.
 
-# Some Config Stuff
+# Setting Up Auto Start Station
 
 1. If you want a certain station to start every time you open pianobar open up the pandora web player( pandora.com ). 
 2. Select a station you want to be as the auto starting station. 
