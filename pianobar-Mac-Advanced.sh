@@ -38,6 +38,22 @@ else
 
 fi
 
+read -p "Do you want to make Notifications Last Longer? (Y/n)?" answer
+case ${answer:0:1} in
+    "n"|"N")
+
+        echo "Notification Timing Will not be set"
+
+    ;;
+    *)
+		
+		printf "Writing Notification time to 3 seconds..."
+		defaults write com.apple.notificationcenterui bannerTime 3
+		printf "OK\n"
+
+    ;;
+esac
+
 #Handle Images
 read -p "Do you want a specific image to show in each notification? (y/N)" answe
 case ${answe:0:1} in
