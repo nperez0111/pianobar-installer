@@ -41,14 +41,14 @@ fi
 read -p "Do you want to make Notifications Last Longer? (Y/n)?" answer
 case ${answer:0:1} in
     "n"|"N")
-
+		defaults delete com.apple.notificationcenterui bannerTime
         echo "Notification Timing Will not be set"
 
     ;;
     *)
 		
-		printf "Writing Notification time to 3 seconds..."
-		defaults write com.apple.notificationcenterui bannerTime 3
+		printf "Writing Notification time to 10 seconds..."
+		defaults write com.apple.notificationcenterui bannerTime 10
 		printf "OK\n"
 
     ;;
@@ -136,7 +136,8 @@ if trigger == 'songstart'
 
   STDIN.each_line { |line| songinfo.store(*line.chomp.split('=', 2))}
 
-  \`terminal-notifier -title "Pianobar" -subtitle "#{songinfo['title']} by #{songinfo['artist']}" -group "Pianobar" ${image} ${showTerm} -message "album: '#{songinfo['album']}' on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"\`
+  \`terminal-notifier -title "#{songinfo['title']}" -subtitle "By: #{songinfo['artist']}" -group "Pianobar" ${image} ${showTerm} -message "Album: #{songinfo['album']} on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"\`
+
 
 elsif trigger == 'userlogin'
 
