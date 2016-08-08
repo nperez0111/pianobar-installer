@@ -141,7 +141,11 @@ if trigger == 'songstart'
 
 elsif trigger == 'userlogin'
 
-	\`terminal-notifier -title "Pianobar Started" -message "Welcome back" -group "Pianobar" ${image}\`
+	\`
+	rm "~/.config/pianobar/ctl" 2> /dev/null
+	mkfifo "~/.config/pianobar/ctl"
+	terminal-notifier -title "Pianobar Started" -message "Welcome back" -group "Pianobar" ${image}
+	\`
 
 elsif trigger == 'stationfetchplaylist'
 
@@ -156,6 +160,7 @@ chmod +x pianobarNotify.rb
 printf "Writing to config file..."
 cat <<EOT >> config
 event_command = ~/.config/pianobar/pianobarNotify.rb
+fifo = ~/.config/pianobar/ctl
 EOT
 printf "OK\n"
 
@@ -164,6 +169,17 @@ defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/C
 printf "OK\n"
 
 echo "Success..."
+
+read -p "Do you want to control Pianobar through shortcuts? (Y/n)" answe
+case ${answe:0:1} in
+    "n"|"N")
+        echo "I thought it was pretty cool..."
+    ;;
+    *)
+        echo "There will be a bunch of bubbles popping up asking you to be ok with installing various services. These Services run commands to control pianobar without being in the terminal window. And can be assigned to global shortcuts from Settings > KeyBoard > Shortcuts > Services."
+    ;;
+esac
+
 read -p "Do you want to run pianobar now? (Y/n)" answe
 case ${answe:0:1} in
     "n"|"N")
