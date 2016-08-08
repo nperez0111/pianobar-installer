@@ -59,7 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>echo -n "q" &gt; ~/.config/pianobar/ctl</string>
+					<string>export PATH=/usr/local/bin:$PATHctlf="$HOME/.config/pianobar/ctl"if [[ -n `pidof pianobar` ]]; then		$notify -t 1000 "Quitting Pianobar"		echo -n "q" &gt; "$ctlf"		echo "0" &gt; "$ip"		sleep 1		if [[ -n $(pidof pianobar) ]]; then			terminal-notifier -message "Force Quiting Pianobar..." -group "Pianobar" -appIcon "$HOME/.config/pianobar/PandoraIco.png"			kill -9 $(pidof pianobar)			if [[ -n $(pidof pianobar) ]]; then				terminal-notifier -message "Pianobar doesn't want to close maybe try manually?" -group "Pianobar" -appIcon "$HOME/.config/pianobar/PandoraIco.png"				killall pianobar			else				terminal-notifier -message "Pianobar quit successfully..." -group "Pianobar" -appIcon "$HOME/.config/pianobar/PandoraIco.png"			fi		fi	fi</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -171,8 +171,6 @@
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
