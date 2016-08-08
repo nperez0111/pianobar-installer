@@ -183,13 +183,62 @@ printf "OK\n"
 
 echo "Success..."
 
+clickBtn(){
+	sleep 1
+	osascript -e 'tell application "System Events" to click button "Install" of window "Service Installer" of process "Automator"'
+        sleep 1
+        if osascript -e 'tell application "System Events" to click button "Done" of window "Service Installer" of process "Automator"'; then
+        	echo "Installing...OK"
+        else
+        	sleep 1
+        	printf "Already Exists, OverWriting..."
+        	osascript -e 'tell application "System Events" to click button "Replace" of window "Service Installer" of process "Automator"'
+        	printf "OK\n"
+        fi
+}
+
 read -p "Do you want to control Pianobar through shortcuts? (Y/n)" answe
 case ${answe:0:1} in
     "n"|"N")
         echo "I thought it was pretty cool..."
     ;;
     *)
-        echo "There will be a bunch of bubbles popping up asking you to be ok with installing various services. These Services run commands to control pianobar without being in the terminal window. And can be assigned to global shortcuts from Settings > KeyBoard > Shortcuts > Services."
+        echo "Please allow your terminal access to your computer... And Press y when done"
+        osascript -e 'tell application "System Events" to click button "Done" of window "Service Installer" of process "Automator"'
+        read uselss
+
+        printf "Downloading Workflows..."
+        mkdir -p ~/.config/pianobar/temp
+        cd ~/.config/pianobar/temp
+
+        curl -sS https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/WorkFlows.zip > WorkFlows.zip
+        printf "OK\n"
+        printf "Unzipping..."
+        unzip WorkFlows.zip
+        printf "OK\n"
+
+        rm WorkFlows.zip
+        rm -r __MACOSX
+
+        echo "A Dialog is about to come up after you press a key do not click on it, when it pops up come back to the terminal window and press any key to continue."
+        read useless
+
+        first=true
+        for file in `ls`; do
+         open "$file";
+         if ["$first" = true] ; then
+         	echo "Ok now press any key to continue..."
+         	read useless
+         else
+         fi
+         clickBtn
+         sleep 1 
+     	done
+
+
+
+
+
     ;;
 esac
 
