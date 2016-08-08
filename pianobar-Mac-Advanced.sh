@@ -38,6 +38,19 @@ else
 
 fi
 
+if command_exists pidof; then
+    #Pianobar is fine so we do nothing and continue script
+    echo "pidof exists. Awesome..."
+
+else 
+
+	printf "pidof Installing..."
+	brew update >/dev/null
+	brew install pidof >/dev/null
+	printf "Successfully Installed\n"
+
+fi
+
 read -p "Do you want to make Notifications Last Longer? (Y/n)?" answer
 case ${answer:0:1} in
     "n"|"N")
