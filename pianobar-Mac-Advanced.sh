@@ -156,6 +156,7 @@ elsif trigger == 'userlogin'
 
 	\`
 	rm "~/.config/pianobar/ctl" 2> /dev/null
+	rm "~/.config/pianobar/isplaying" 2> /dev/null
 	mkfifo "~/.config/pianobar/ctl"
 	terminal-notifier -title "Pianobar Started" -message "Welcome back" -group "Pianobar" ${image}
 	\`
@@ -235,9 +236,14 @@ case ${answe:0:1} in
          fi
          clickBtn $file
      	done
-     	
+
      	open -b com.apple.systempreferences /System/Library/PreferencePanes/Keyboard.prefPane
-     	echo "To Setup keyboard shortcuts, may require a reboot. Go to Shortcuts > Services > Scroll to General at the bottom and select the shortcuts you want for each combination. On Reboot to enable the shortcuts, go to finder, at the top bar click the word Finder > Services and each shortcut you would like to use, this enables them to be used throughout the system. Press Enter to Continue... "
+     	echo ""
+     	echo "To Setup keyboard shortcuts, may require a reboot."
+     	echo "Go to Shortcuts > Services > Scroll to General at the bottom and select the shortcuts you want for each combination."
+     	echo "On Reboot to enable the shortcuts, go to finder, at the top bar click the word Finder > Services and each shortcut you would like to use, this enables them to be used throughout the system."
+		echo ""
+     	echo "Press Enter to Continue ..."
      	read empty
      	
     ;;
