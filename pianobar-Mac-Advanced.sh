@@ -184,67 +184,36 @@ printf "OK\n"
 
 echo "Success..."
 
-clickBtn(){
-	osascript -e 'tell application "System Events" to click button "Install" of window "Service Installer" of process "Automator"' &> /dev/null
-        sleep 0.2
-        if osascript -e 'tell application "System Events" to click button "Done" of window "Service Installer" of process "Automator"' &> /dev/null; then
-        	echo "Installing $1...OK"
-        else
-        	printf "Already Exists, OverWriting $1..."
-        	osascript -e 'tell application "System Events" to click button "Replace" of window "Service Installer" of process "Automator"' &> /dev/null
-        	sleep 0.2
-        	osascript -e 'tell application "System Events" to click button "Done" of window "Service Installer" of process "Automator"' &> /dev/null
-        	printf "OK\n"
-        fi
-}
-
 read -p "Do you want to control Pianobar through shortcuts? (Y/n)" answe
 case ${answe:0:1} in
     "n"|"N")
         echo "I thought it was pretty cool..."
     ;;
     *)
-        echo "Please allow your terminal access to your computer. If no prompt comes up you have already done this. Press Enter when Complete..."
-        osascript -e 'tell application "System Events" to click button "Done" of window "Service Installer" of process "Automator"' &> /dev/null
-        read uselss
 
         printf "Downloading Workflows..."
-        rm -f ~/.config/pianobar/temp &> /dev/null
-        mkdir -p ~/.config/pianobar/temp
-        cd ~/.config/pianobar/temp
-
+        cd ~/Library/Services
         curl -sS https://raw.githubusercontent.com/nperez0111/pianobar-installer/master/WorkFlows.zip > WorkFlows.zip
         printf "OK\n"
+
         printf "Unzipping..."
         unzip -o WorkFlows.zip &> /dev/null
         printf "OK\n"
-
+        
+        printf "Removing Extra Files..."
         rm WorkFlows.zip
         rm -r __MACOSX
-
-        echo "A Dialog is about to come up after you press a key do not click on it, when it pops up come back to the terminal window and press Enter to continue..."
-        read useless
-
-        first=true
-
-        for file in `ls`; do
-         open "$file";
-         if [[ "$first" ]]; then
-         	echo "Ok, Press any key to continue..."
-         	read useless
-         	unset first
-         fi
-         clickBtn $file
-     	done
+        printf "OK\n\n"
 
      	open -b com.apple.systempreferences /System/Library/PreferencePanes/Keyboard.prefPane
      	echo ""
-     	echo "To Setup keyboard shortcuts, may require a reboot."
-     	echo "Go to Shortcuts > Services > Scroll to General at the bottom and select the shortcuts you want for each combination."
-     	echo "On Reboot to enable the shortcuts, go to finder, at the top bar click the word Finder > Services and each shortcut you would like to use, this enables them to be used throughout the system."
+     	echo "Setup of keyboard shortcuts complete, mostly will require a reboot."
+     	echo "Go to Shortcuts > Services > Scroll to General at the bottom, Select the shortcuts you want for each combination."
+     	echo "On Reboot to enable the shortcuts, go to Finder, at the top bar click the word Finder > Services and each shortcut you would like to use, this enables them to be used throughout the system."
+		echo "This can be used in any program open if the shortcut conflicts with a program shortcut."
+		echo "Simply go to the app name at the top bar > Services and control pianobar through there."
 		echo ""
-     	echo "Press Enter to Continue ..."
-     	read empty
+     	echo "Successfully Installed Shortcuts!"
      	
     ;;
 esac
