@@ -157,7 +157,7 @@ elsif trigger == 'userlogin'
 	\`
 	rm "~/.config/pianobar/ctl" 2> /dev/null
 	rm "~/.config/pianobar/isplaying" 2> /dev/null
-	mkfifo "~/.config/pianobar/ctl"
+	mkfifo "~/.config/pianobar/ctl" 2> /dev/null
 	terminal-notifier -title "Pianobar Started" -message "Welcome back" -group "Pianobar" ${image}
 	\`
 
@@ -199,7 +199,7 @@ case ${answe:0:1} in
         printf "Unzipping..."
         unzip -o WorkFlows.zip &> /dev/null
         printf "OK\n"
-        
+
         printf "Removing Extra Files..."
         rm WorkFlows.zip
         rm -r __MACOSX
