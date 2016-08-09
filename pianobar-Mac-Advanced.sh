@@ -71,8 +71,10 @@ esac
 read -p "Do you want a specific image to show in each notification? (y/N)" answe
 case ${answe:0:1} in
     "y"|"Y")
-        printf "Please enter the file path of the image you would like as the icon of each notification: \n"
-		read imgFilePath
+		touch ~/.config/pianobar/PandoraIco.png
+		open ~/.config/pianobar/.
+        echo "Please save an image to the finder window that just opened with the file name PandoraIco.png."
+		imgFilePath="~/.config/pianobar/PandoraIco.png"
 		image="-appIcon \"${imgFilePath}\""
     ;;
     *)
@@ -224,9 +226,7 @@ case ${answe:0:1} in
         exit 0;
     ;;
     *)
-        echo "Pianobar Starting...."
-        echo ""
-        echo ""
+        printf "\nPianobar Starting....\n\n"
         pianobar
     ;;
 esac
