@@ -128,8 +128,8 @@ case ${answ:0:1} in
 		showTerm="-activate \"${termApp}\""
     ;;
     *)
-        showTerm=""
-        echo "No action will be performed on click of notification..."
+        showTerm="-open \"#{songinfo['detailUrl']}\""
+        echo "On click of Notification will redirect you to the album art and songinfo..."
     ;;
 esac
 
