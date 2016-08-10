@@ -179,7 +179,7 @@ if [[ -n `pidof pianobar` ]]; then
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>289.000000:253.000000</string>
+				<string>309.000000:253.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -254,7 +254,7 @@ if [[ -n `pidof pianobar` ]]; then
 					<key>defaultMessage</key>
 					<string>What Station would you like to play (Quick Mix is default)?</string>
 					<key>requireInput</key>
-					<false/>
+					<true/>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.TextInputDialog</string>
@@ -270,6 +270,8 @@ if [[ -n `pidof pianobar` ]]; then
 				</array>
 				<key>Class Name</key>
 				<string>AMAskForTextAction</string>
+				<key>IgnoresInput</key>
+				<true/>
 				<key>InputUUID</key>
 				<string>D8CEAEA3-265C-443A-B9BF-2509D0E0B617</string>
 				<key>Keywords</key>
@@ -355,12 +357,10 @@ if [[ -n `pidof pianobar` ]]; then
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>289.000000:615.000000</string>
+				<string>309.000000:615.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Text.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -532,12 +532,10 @@ if [[ -n `pidof pianobar` ]]; then
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>289.000000:798.000000</string>
+				<string>309.000000:798.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -547,19 +545,19 @@ if [[ -n `pidof pianobar` ]]; then
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>224773C6-7AF8-47B2-9408-63A09EE9F23F</key>
-		<dict>
-			<key>from</key>
-			<string>0EFF0128-4E68-4A27-8854-723209A1A953 - 0EFF0128-4E68-4A27-8854-723209A1A953</string>
-			<key>to</key>
-			<string>CD659560-598B-455C-8101-98054EB8DABA - CD659560-598B-455C-8101-98054EB8DABA</string>
-		</dict>
-		<key>A14CD163-D45F-44C2-A4F6-3CD0CFE17891</key>
+		<key>56B87BE1-DCFD-4810-BD81-4FA235EAF3A1</key>
 		<dict>
 			<key>from</key>
 			<string>90E3740D-8603-4BDC-960F-C72A99E69B29 - 90E3740D-8603-4BDC-960F-C72A99E69B29</string>
 			<key>to</key>
 			<string>0EFF0128-4E68-4A27-8854-723209A1A953 - 0EFF0128-4E68-4A27-8854-723209A1A953</string>
+		</dict>
+		<key>8B6AFBD6-95C8-4A3D-8621-210CE7DC4918</key>
+		<dict>
+			<key>from</key>
+			<string>0EFF0128-4E68-4A27-8854-723209A1A953 - 0EFF0128-4E68-4A27-8854-723209A1A953</string>
+			<key>to</key>
+			<string>CD659560-598B-455C-8101-98054EB8DABA - CD659560-598B-455C-8101-98054EB8DABA</string>
 		</dict>
 	</dict>
 	<key>workflowMetaData</key>
