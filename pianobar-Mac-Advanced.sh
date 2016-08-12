@@ -27,27 +27,27 @@ esac
 
 if command_exists terminal-notifier; then
     #Pianobar is fine so we do nothing and continue script
-    echo "Terminal-Notifier exists. Awesome..."
+    echo "Terminal-Notifier exists. OK..."
 
 else 
 
 	printf "Terminal-Notifier Installing..."
 	brew update >/dev/null
 	brew install terminal-notifier >/dev/null
-	printf "Successfully Installed\n"
+	printf "OK\n"
 
 fi
 
 if command_exists pidof; then
     #Pianobar is fine so we do nothing and continue script
-    echo "pidof exists. Awesome..."
+    echo "pidof exists. OK..."
 
 else 
 
 	printf "pidof Installing..."
 	brew update >/dev/null
 	brew install pidof >/dev/null
-	printf "Successfully Installed\n"
+	printf "OK\n"
 
 fi
 
