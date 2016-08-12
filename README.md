@@ -1,12 +1,27 @@
 # Pianobar Installer Scripts and Guide
 ======================================
-These Scripts Help Install Pianobar (A Command Line Pandora Player) onto Windows and Mac OS X. For Mac I've written a bash script that can be copied and pasted into a terminal emulator of your choice to install pianobar and fix some settings. 
+![Simple Install of Pianobar](SimpleInstall.gif)
+![Advanced Install of Pianobar](AdvancedInstall.gif)
 
-The funtionality of the scripts are as follows:
- * Fixes a warning that comes up because of an out of date audio library (libao)
- * Sets up Auto Login to pianobar using your pandora account ( Otherwise you would have to provide your username and password on every instance of pianobar )
- * Sets up Auto Start Station which on start of pianobar will allow you to start a station you set automatically ( otherwise you would need to select the station on every restart of pianobar)
- * If you use the advanced installer it will allow for you to set up notifications on changing the song to mac os x banners. And even show album cover art so you know exactly what song is playing without having to go back into the console
+These Scripts Help Install [Pianobar](http://) (A Command Line Pandora Player) onto Windows and Mac OS X. For Mac I've written a bash script that can be copied and pasted into a terminal emulator of your choice to install pianobar and fix some settings. 
+
+# The difference between the two installers
+
+## What the Simple Install does
+* Pianobar on mac is not so simple of an install.
+* This is a full install that can be performed on a mac with absolutely no prior apps or commands.
+* This fixes non-obvious errors in the install of pianobar that have to do with the audio.
+* Fully sets up the config file of pianobar so that you don't have to mess with its config file.
+* Sets up auto login to pianobar so that you don't have to enter the username and password every time you use it.
+* Sets up auto start station to automatically specify a station to start pianobar with.
+
+## Why the Advanced Install does (All options are optional)
+  * Does everything that the simple installer does. 
+  * Adds Notifications on changing a song
+  	* Notification looks like this:
+  	* ![Notification Image](Notification.png)
+  * Adds Shortcuts to (Play/Pause, Next, Select Station, Like, Dislike, Ban, Quit)
+  	* These can be accessed in any app which supports services, the keyboard shortcuts themselves are specified by you.
 
 # Mac Install Simple (Shell Script)
 
