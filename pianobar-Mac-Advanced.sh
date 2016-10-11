@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Advanced Version does use notifications
 
 command_exists () {
@@ -181,7 +181,7 @@ EOT
 printf "OK\n"
 
 printf "Writing setting to terminal-notifier..."
-defaults write /usr/local/Cellar/terminal-notifier/1.6.3/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
+defaults write /usr/local/Cellar/terminal-notifier/1.7.1/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
 printf "OK\n"
 
 echo "Success..."
