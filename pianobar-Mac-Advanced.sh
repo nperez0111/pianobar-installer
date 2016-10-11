@@ -181,7 +181,8 @@ EOT
 printf "OK\n"
 
 printf "Writing setting to terminal-notifier..."
-defaults write /usr/local/Cellar/terminal-notifier/1.7.1/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
+#the whol brew info thing is to get the current version of terminal notifier from brew
+defaults write /usr/local/Cellar/terminal-notifier/$(brew info terminal-notifier | grep -i stable | grep -o [0-9].[0-9].[0-9])/terminal-notifier.app/Contents/Info.plist NSAppTransportSecurity '<dict> <key>NSAllowsArbitraryLoads</key> <true/> </dict>'
 printf "OK\n"
 
 echo "Success..."
