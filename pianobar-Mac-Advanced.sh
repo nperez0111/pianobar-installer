@@ -151,7 +151,7 @@ if trigger == 'songstart'
 
   STDIN.each_line { |line| songinfo.store(*line.chomp.split('=', 2))}
 
-  \`terminal-notifier -title "#{songinfo['title']}" -subtitle "By: #{songinfo['artist']}" -group "Pianobar" ${image} ${showTerm} -message "Album: #{songinfo['album']} on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"\`
+  \`terminal-notifier -title "#{songinfo['title'].gsub('"', '')}" -subtitle "By: #{songinfo['artist'].gsub('"', '')}" -group "Pianobar" ${image} ${showTerm} -message "Album: #{songinfo['album']} on #{songinfo['stationName']}" -contentImage "#{songinfo['coverArt']}"\`
 
 
 elsif trigger == 'userlogin'
