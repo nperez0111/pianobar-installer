@@ -15,7 +15,7 @@ These Scripts Help Install [Pianobar](http://) (A Command Line Pandora Player) o
 * Sets up auto login to pianobar so that you don't have to enter the username and password every time you use it.
 * Sets up auto start station to automatically specify a station to start pianobar with.
 
-## Why the Advanced Install does (All options are optional)
+## What the Advanced Install does (All options are optional)
   * Does everything that the simple installer does. 
   * Adds Notifications on changing a song
   	* Notification looks like this:
